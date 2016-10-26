@@ -2,6 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreator';
+import './style.css'
 
 class App extends Component {
   render() {
@@ -9,8 +10,8 @@ class App extends Component {
     const {helloworldClick} = this.props.actions;
     return (
       <div onClick={() => helloworldClick("action worked!")}>
-        <div>{message}</div>
-        Hello, World!
+        <div className="redNote">{message}</div>
+        Hello, World! (click here)
       </div>
     )
   }
