@@ -22,22 +22,22 @@ class Message extends Component {
 
 class App extends Component {
 
-
-
   render() {
     const {message} = this.props;
     const {helloworldClick} = this.props.actions;
     return (
-      <div onClick={() => helloworldClick("action worked!")}>
+      <div onClick={() => helloworldClick("action worked!")} style={{cursor: "pointer"}}>
         { message && <Message message={message}/> }
-        Hello, World! (click here)
+        Click (click here)
+        { this.props.children }
       </div>
     )
   }
+
 }
 
 const mapStateToProps = state => {
-  const {message} = state;
+  const {message} = state.main;
   return {
     message
   }

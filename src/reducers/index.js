@@ -1,17 +1,10 @@
-import { CLICK_ON_HELLOWORLD } from '../actions/constants';
+import {combineReducers} from 'redux'
+import {routerReducer} from 'react-router-redux'
+import main from './main'
 
-const main = (state = {
-  message: null
-}, action) => {
-  switch (action.type) {
-    case CLICK_ON_HELLOWORLD:
-      return {
-        ...state,
-        message: action.payloads
-      };
-    default:
-      return state
-  }
-};
+const rootReducer = combineReducers({
+  main,
+  routing: routerReducer
+});
 
-export default main;
+export default rootReducer
