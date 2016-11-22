@@ -4,8 +4,8 @@
   "description": "starter kit for react application",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development node server",
-    "prod": "NODE_ENV=production node server",
+    "start": "NODE_ENV=development node server",
+    "start:prod": "NODE_ENV=production node server",
     "build": "NODE_ENV=production webpack --config webpack.config.js --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
