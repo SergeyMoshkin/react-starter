@@ -7,8 +7,8 @@ var compiler = webpack(webpackConfig);
 var path = require('path');
 var setup = require('./middleware')(app, compiler, webpackConfig);
 
-app.get('*', function(req, res, next) {
-  if(req.get('Accept').indexOf('application/json') > -1){
+app.get('*', function (req, res, next) {
+  if (req.get('Accept').indexOf('application/json') > -1) {
     next();
   }
   else {
@@ -17,14 +17,34 @@ app.get('*', function(req, res, next) {
 
 });
 
-app.get('/table', function(req, res) {
+app.get('/table', function (req, res) {
   res.json(
     {
-      "@class": "table",
-      cols: {
-        id: "number",
-        name: "string"
-      }
+      "@class": "finch.community.model.Table",
+      data: [
+        {
+          id: "1",
+          name: "Bob"
+        },
+        {
+          id: "2",
+          name: "Pete"
+        },
+        {
+          id: "3",
+          name: "Ann"
+        }
+      ]
+    }
+  );
+});
+
+app.get('/row', function (req, res) {
+  res.json(
+    {
+      "@class": "finch.community.model.Row",
+      color: "red",
+      highlight: "transparent"
     }
   );
 });
