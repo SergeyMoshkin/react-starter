@@ -2,7 +2,8 @@ import { CLICK_ON_HELLOWORLD, RESPONSE_PROCESSING } from '../actions/constants';
 
 const initState = {
   message: null,
-  response: null
+  response: null,
+  items: ["", "page", "table", "row", "not-found"]
 };
 
 const main = (state = initState, action) => {

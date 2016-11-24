@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreator';
 import ComponentJSON from '../components/ComponentJSON'
+import Menu from '../components/Menu'
 
 class NotFound extends Component {
 
@@ -12,7 +13,7 @@ class NotFound extends Component {
   }
 
   render() {
-    const { response } = this.props;
+    const { response, items } = this.props;
     let Element = null;
     let data;
     let responseClass;
@@ -33,6 +34,7 @@ class NotFound extends Component {
     }
     return (
       <div>
+        <Menu items={items}/>
         <Element data={data}/>
       </div>
     )
@@ -40,9 +42,10 @@ class NotFound extends Component {
 }
 
 const mapStateToProps = state => {
-  const { response } = state.main;
+  const { response, items } = state.main;
   return {
-    response
+    response,
+    items
   }
 };
 
