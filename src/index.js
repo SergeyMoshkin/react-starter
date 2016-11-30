@@ -7,6 +7,8 @@ import Page from './components/Page';
 import NotFound from './containers/NotFound';
 import { syncHistoryWithStore, analyticsService } from 'react-router-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+let injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);

@@ -5,6 +5,7 @@ import * as actionCreators from '../actions/actionCreator';
 import mainStyles from './style.css';
 import styles from './style.useable.css'
 import Menu from '../components/Menu';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Message extends Component {
   componentWillMount() {
@@ -30,16 +31,18 @@ class App extends Component {
     const {message, items} = this.props;
     const {helloworldClick} = this.props.actions;
     return (
-      <div>
-        <Menu items={items}/>
-        { message && <Message message={message}/> }
-        <div className={mainStyles.wrapper}>
-          <div onClick={() => helloworldClick("action worked!")} style={{cursor: "pointer", marginBottom: "20px"}}>
-            Click (click here)
+      <MuiThemeProvider>
+        <div>
+          <Menu items={items}/>
+          <div className={mainStyles.wrapper}>
+            { message && <Message message={message}/> }
+            <div onClick={() => helloworldClick("action worked!")} style={{cursor: "pointer", marginBottom: "20px"}}>
+              Click (click here)
+            </div>
+            { this.props.children }
           </div>
-          { this.props.children }
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 
