@@ -16,8 +16,8 @@ ReactDom.render(
     <Router history={history}>
       <Route path="/" component={App}>
         <Route path="page" component={Page} />
+        <Route path="*" component={NotFound} />
       </Route>
-      <Route path="*" component={NotFound} />
     </Router>
   </Provider>,
   document.getElementById('main')

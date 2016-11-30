@@ -1,8 +1,8 @@
 import React, {PropTypes, Component} from 'react';
 import {connect} from 'react-redux';
-import { bindActionCreators } from 'redux'
+import {bindActionCreators} from 'redux'
 import * as actionCreators from '../actions/actionCreator';
-import './style.css'
+import mainStyles from './style.css';
 import styles from './style.useable.css'
 import Menu from '../components/Menu';
 
@@ -10,9 +10,11 @@ class Message extends Component {
   componentWillMount() {
     styles.use();
   }
+
   componentWillUnmount() {
     styles.unuse();
   }
+
   render() {
     const styleUsed = styles.locals;
     return (
@@ -31,10 +33,12 @@ class App extends Component {
       <div>
         <Menu items={items}/>
         { message && <Message message={message}/> }
-        <div onClick={() => helloworldClick("action worked!")} style={{cursor: "pointer"}}>
-          Click (click here)
+        <div className={mainStyles.wrapper}>
+          <div onClick={() => helloworldClick("action worked!")} style={{cursor: "pointer", marginBottom: "20px"}}>
+            Click (click here)
+          </div>
+          { this.props.children }
         </div>
-        { this.props.children }
       </div>
     )
   }
@@ -42,7 +46,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { message, items } = state.main;
+  const {message, items} = state.main;
   return {
     message,
     items
@@ -50,7 +54,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actionCreators, dispatch) }
+  return {actions: bindActionCreators(actionCreators, dispatch)}
 };
 
 export default connect(

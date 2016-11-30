@@ -6,3 +6,6 @@ html, body {
 .redNote {
   color: red;
 }
+.wrapper {
+  padding: 20px;
+}

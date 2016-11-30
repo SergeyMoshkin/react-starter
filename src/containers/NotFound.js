@@ -3,17 +3,29 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreator';
 import ComponentJSON from '../components/ComponentJSON'
-import Menu from '../components/Menu'
 
 class NotFound extends Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     const { fetchModel } = this.props.actions;
-    fetchModel();
+    this.fetchModel = fetchModel;
+  }
+
+  componentWillMount() {
+    this.fetchModel();
+  }
+
+  componentWillReceiveProps(next) {
+    const url = this.props.params.splat;
+    const nextUrl = next.params.splat;
+    if(url !== nextUrl) {
+      this.fetchModel();
+    }
   }
 
   render() {
-    const { response, items } = this.props;
+    const { response } = this.props;
     let Element = null;
     let data;
     let responseClass;
@@ -34,7 +46,6 @@ class NotFound extends Component {
     }
     return (
       <div>
-        <Menu items={items}/>
         <Element data={data}/>
       </div>
     )
@@ -42,10 +53,9 @@ class NotFound extends Component {
 }
 
 const mapStateToProps = state => {
-  const { response, items } = state.main;
+  const { response } = state.main;
   return {
-    response,
-    items
+    response
   }
 };
 
