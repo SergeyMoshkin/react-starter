@@ -4,7 +4,7 @@ import {TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} fro
 import {Table as TableMaterial} from 'material-ui/Table';
 
 const Table = (props) => {
-  let { data, fields } = props;
+  const { data, fields } = props;
   return (
     <TableMaterial selectable={false}>
       <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
