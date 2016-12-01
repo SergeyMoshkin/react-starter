@@ -1,29 +1,34 @@
 import React, {PropTypes} from 'react';
 import style from './Table.css'
+import {TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import {Table as TableMaterial} from 'material-ui/Table';
 
 const Table = (props) => {
   let { data, fields } = props;
   return (
-    <div className={style.main}>
-      <div className={`${style.row} ${style.head}`}>
+    <TableMaterial selectable={false}>
+      <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+        <TableRow>
+          {
+            fields.map((fieldItem, i) => <TableHeaderColumn key={`head${i}`} tooltip={fieldItem}>{ fieldItem }</TableHeaderColumn>)
+          }
+        </TableRow>
+      </TableHeader>
+      <TableBody displayRowCheckbox={false} showRowHover={true}>
         {
-          fields.map((fieldItem, i) => <span key={`head${i}`} className={style.cell}>{ fieldItem }</span>)
+          data.map((dataItem, i) => {
+            return (
+              <TableRow key={`row${i}`}>
+                {
+                  fields.map((fieldItem, i) => <TableRowColumn key={fieldItem + i}>{ dataItem[fieldItem] }</TableRowColumn>)
+                }
+              </TableRow>
+            )
+          })
         }
-      </div>
-      {
-        data.map((dataItem, i) => {
-          return (
-            <div key={`row${i}`} className={style.row}>
-              {
-                fields.map((fieldItem, i) => <span key={fieldItem + i} className={style.cell}>{ dataItem[fieldItem] }</span>)
-              }
-            </div>
-          )
-        })
-      }
-    </div>
+      </TableBody>
+    </TableMaterial>
   )
-
 };
 
 Table.PropTypes = {
