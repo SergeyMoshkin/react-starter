@@ -33,6 +33,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div>
+
           <Menu items={items}/>
           <div className={mainStyles.wrapper}>
             { message && <Message message={message}/> }

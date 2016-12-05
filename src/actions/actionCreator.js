@@ -1,4 +1,4 @@
-import { CLICK_ON_HELLOWORLD, RESPONSE_PROCESSING } from './constants';
+import { CLICK_ON_HELLOWORLD, RESPONSE_PROCESSING, TOGGLE_DIALOG } from './constants';
 
 export const helloworldClick = (message) => ({
   type: CLICK_ON_HELLOWORLD,
@@ -9,6 +9,14 @@ export const responseProcessing = (data) => {
   return  {
     type: RESPONSE_PROCESSING,
     payloads: data
+  }
+};
+
+export const dialogToggle = (num, isDialogShown) => {
+  return  {
+    type: TOGGLE_DIALOG,
+    num,
+    isDialogShown
   }
 };
 

@@ -1,9 +1,11 @@
-import { CLICK_ON_HELLOWORLD, RESPONSE_PROCESSING } from '../actions/constants';
+import {CLICK_ON_HELLOWORLD, RESPONSE_PROCESSING, TOGGLE_DIALOG} from '../actions/constants';
 
 const initState = {
   message: null,
   response: null,
-  items: ["", "page", "table", "row", "not-found"]
+  items: ["", "page", "table", "row", "not-found"],
+  num: null,
+  isDialogShown: false
 };
 
 const main = (state = initState, action) => {
@@ -17,6 +19,12 @@ const main = (state = initState, action) => {
       return {
         ...state,
         response: action.payloads
+      };
+    case TOGGLE_DIALOG:
+      return {
+        ...state,
+        isDialogShown: action.isDialogShown,
+        num: action.num
       };
     default:
       return state

@@ -1,5 +1,5 @@
-import Table from '../components/Table'
+import Table from '../containers/Table/index'
 
 export default {
-  Table,
+  Table
 }

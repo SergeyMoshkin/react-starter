@@ -1,0 +1,11 @@
+.dialogRow {
+  display: flex;
+  margin-bottom: 5px;
+}
+.dialogRowTitle {
+  flex: 2;
+  font-weight: bold;
+}
+.dialogRowDiscription {
+  flex: 10;
+}
