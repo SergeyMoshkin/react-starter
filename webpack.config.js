@@ -17,24 +17,32 @@ module.exports = {
     publicPath: '/static/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
+        use: ['react-hot-loader', 'babel-loader'],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.css$/,
         exclude: /\.useable\.css$/,
-        loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        use: [{
+          'loader': 'style-loader'
+        }, {
+          'loader': 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        }]
       },
       {
         test: /\.useable\.css$/,
-        loader: 'style/useable!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        use: [{
+          'loader': 'style-loader/useable'
+        }, {
+          'loader': 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        }]
       },
       {
         test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url?name=[path][name].[ext]&limit=4096'
+        use: 'url-loader?name=[path][name].[ext]&limit=4096-loader'
       }
     ]
   },
