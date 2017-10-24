@@ -51,6 +51,3 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ]
 };
-
-if(isProd){
-}
