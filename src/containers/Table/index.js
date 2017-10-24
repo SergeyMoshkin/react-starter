@@ -41,7 +41,6 @@ class Table extends Component {
   render() {
     const {data, fields, isDialogShown, num, dialogContent} = this.props;
     const {dialogToggle} = this.props.actions;
-    let content = dialogContent[num];
     return (
       <div>
         <TableMaterial selectable={false} onCellClick={ (num) => dialogToggle(num, true)}>
