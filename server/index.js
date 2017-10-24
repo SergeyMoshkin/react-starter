@@ -1,11 +1,11 @@
-var port = process.env.PORT || 3010;
+const port = process.env.PORT || 3010;
 
-var app = require('express')();
-var webpack = require('webpack');
-var webpackConfig = require('../webpack.config');
-var compiler = webpack(webpackConfig);
-var path = require('path');
-var setup = require('./middleware')(app, compiler, webpackConfig);
+const app = require('express')();
+const webpack = require('webpack');
+const webpackConfig = require('../webpack.config');
+const compiler = webpack(webpackConfig);
+const path = require('path');
+const setup = require('./middleware')(app, compiler, webpackConfig);
 
 app.get('*', function (req, res, next) {
   if (req.get('Accept').indexOf('application/json') > -1) {
