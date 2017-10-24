@@ -13,6 +13,7 @@ class Table extends Component {
     fields: PropTypes.array,
     data: PropTypes.array
   };
+  
   static defaultProps = {
     fields: ["id", "name"]
   };
