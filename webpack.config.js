@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var NODE_ENV = process.env.NODE_ENV;
-var PROD = 'production';
-var DEV = 'development';
-var isProd = NODE_ENV === PROD;
+const path = require('path');
+const webpack = require('webpack');
+const NODE_ENV = process.env.NODE_ENV;
+const PROD = 'production';
+const DEV = 'development';
+const isProd = NODE_ENV === PROD;
 
 module.exports = {
   devtool: 'eval',
