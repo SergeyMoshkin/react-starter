@@ -26,7 +26,6 @@ const main = (state = initState, action) => {
         isDialogShown: action.isDialogShown,
         num: action.num
       };
-      
     default:
       return state
   }
